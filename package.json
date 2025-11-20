@@ -1,0 +1,37 @@
+{
+  "name": "houseway-project",
+  "version": "1.0.0",
+  "description": "MERN stack mobile application for house designing company with role-based authentication",
+  "main": "index.js",
+  "scripts": {
+    "install-backend": "cd backend && npm install",
+    "install-mobile": "cd mobile-app && npm install",
+    "install-all": "npm run install-backend && npm run install-mobile",
+    "dev-backend": "cd backend && npm run dev",
+    "dev-mobile": "cd mobile-app && expo start",
+    "start-backend": "cd backend && npm start",
+    "test-backend": "cd backend && npm test",
+    "test-mobile": "cd mobile-app && npm test"
+  },
+  "keywords": [
+    "mern",
+    "react-native",
+    "expo",
+    "mongodb",
+    "express",
+    "nodejs",
+    "jwt",
+    "role-based-auth",
+    "house-design",
+    "mobile-app"
+  ],
+  "author": "Houseway Company",
+  "license": "PROPRIETARY",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
+  }
+}
