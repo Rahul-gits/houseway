@@ -157,6 +157,16 @@ try {
   app.use('/api/files', require('./routes/files'));
   app.use('/api/dashboard', require('./routes/dashboard'));
   app.use('/api/work-status', require('./routes/workStatus'));
+
+  // New Client Management Flow routes
+  try {
+    app.use('/api/clients', require('./routes/clients'));
+    app.use('/api/timeline', require('./routes/timeline'));
+    app.use('/api/media', require('./routes/media'));
+    app.use('/api/invoices', require('./routes/invoices'));
+  } catch (clientRouteError) {
+    console.error('❌ Error loading client management routes:', clientRouteError.message);
+  }
 } catch (routeError) {
   console.error('❌ Error loading routes:', routeError.message);
 }
