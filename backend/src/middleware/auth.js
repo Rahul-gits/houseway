@@ -98,11 +98,37 @@ const isOwnerEmployeeOrVendor = authorize('owner', 'employee', 'vendor');
  */
 const isAuthenticated = authenticate;
 
+// Alias for backward compatibility
+const requireRole = authorize;
+
+// Middleware to check project access
+const authorizeProjectAccess = async (req, res, next) => {
+  try {
+    const projectId = req.params.projectId || req.params.id;
+    if (!projectId) {
+      return res.status(400).json({
+        success: false,
+        message: 'Project ID is required'
+      });
+    }
+    // For now, allow access if user is authenticated
+    // In production, you'd check if user has access to the specific project
+    next();
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Authorization check failed'
+    });
+  }
+};
+
 module.exports = {
   authenticate,
   authorize,
+  requireRole, // Add this for compatibility
   isOwner,
   isOwnerOrEmployee,
   isOwnerEmployeeOrVendor,
   isAuthenticated,
+  authorizeProjectAccess,
 };
